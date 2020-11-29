@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "rootDir": "isHaiku",
+    "target": "es5"
+  },
+  "exclude": [
+    "build",
+    "./**/*.test.ts"
+  ]
+}

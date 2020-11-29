@@ -1,0 +1,50 @@
+{
+  "author": "Daniel LaCosse <d@niellacos.se>",
+  "description": "check if a string is a haiku",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^10.0.0",
+    "@rollup/plugin-typescript": "^6.1.0",
+    "@types/jest": "^26.0.15",
+    "@types/syllable": "^4.1.0",
+    "concurrently": "^5.3.0",
+    "eslint": "^7.14.0",
+    "eslint-plugin-compat": "^3.8.0",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.34.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "syllable": "^4.1.0",
+    "ts-jest": "^26.4.4",
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.2"
+  },
+  "jest": {
+    "rootDir": "./isHaiku",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    }
+  },
+  "license": "MIT",
+  "main": "build/main.js",
+  "module": "build/module.js",
+  "name": "is-haiku",
+  "peerDependencies": {
+    "syllable": "^4.1.0"
+  },
+  "repository": "https://github.com/daniellacosse/isHaiku",
+  "scripts": {
+    "build": "concurrently 'yarn:build:*'",
+    "build:module": "rollup -c",
+    "build:types": "tsc --outDir build --declarationDir build/types --declaration true --emitDeclarationOnly",
+    "checks": "concurrently --kill-others-on-fail 'yarn:build:*' 'yarn:checks:*'",
+    "checks:eslint": "yarn eslint",
+    "checks:jest": "yarn jest",
+    "prepublish": "yarn build",
+    "reset": "rimraf build && rimraf node_modules"
+  },
+  "types": "build/types/isHaiku.d.ts",
+  "version": "1.0.0"
+}
